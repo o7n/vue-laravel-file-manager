@@ -112,7 +112,7 @@ export default {
           },
           {
             name: 'paste',
-            icon: 'far fa-clipboard',
+            icon: 'fa fa-clipboard',
           },
           {
             name: 'zip',
