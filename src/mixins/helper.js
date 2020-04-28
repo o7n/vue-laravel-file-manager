@@ -25,6 +25,7 @@ export default {
     timestampToDate(timestamp) {
       // if date not defined
       if (timestamp === undefined) return '-';
+      if (timestamp == 0) return '-';
 
       const date = new Date(timestamp * 1000);
 
@@ -113,6 +114,29 @@ export default {
 
       // file blank
       return 'fa-file';
+    },
+
+    /** File permission to icon
+     * @returns {*}
+     * @param permission
+     */
+
+    permissionToIcon(is_public, expires) {
+        if (is_public) {
+            if (expires == null) {
+                return 'fas fa-lock-open green';
+            }
+
+            var now = new Date().getTime() / 1000;
+            if (expires > now) {
+                return 'fas fa-clock green';
+            }
+            else {
+                return 'fas fa-clock red';
+            }
+        } else {
+            return 'fas fa-lock red';
+        }
     },
 
     /**

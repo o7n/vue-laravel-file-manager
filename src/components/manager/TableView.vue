@@ -3,6 +3,7 @@
         <table class="table table-sm">
             <thead>
                 <tr>
+                    <th class="w-auto"></th>
                     <th class="w-65" v-on:click="sortBy('name')">
                         {{ lang.manager.table.name }}
                         <template v-if="sortSettings.field === 'name'">
@@ -43,7 +44,7 @@
             </thead>
             <tbody>
                 <tr v-if="!isRootPath">
-                    <td colspan="4" class="fm-content-item" v-on:click="levelUp">
+                    <td colspan="5" class="fm-content-item" v-on:click="levelUp">
                         <i class="fas fa-level-up-alt"></i>
                     </td>
                 </tr>
@@ -52,6 +53,7 @@
                     v-bind:class="{'table-info': checkSelect('directories', directory.path)}"
                     v-on:click="selectItem('directories', directory.path, $event)"
                     v-on:contextmenu.prevent="contextMenu(directory, $event)">
+                    <td></td>
                     <td class="fm-content-item unselectable"
                         v-bind:class="(acl && directory.acl === 0) ? 'text-hidden' : ''"
                         v-on:dblclick="selectDirectory(directory.path)">
@@ -69,12 +71,13 @@
                     v-on:click="selectItem('files', file.path, $event)"
                     v-on:dblclick="selectAction(file.path, file.extension)"
                     v-on:contextmenu.prevent="contextMenu(file, $event)">
+                    <td v-bind:title="timestampToDate(file.expires)"><i class="permission" v-bind:class="permissionToIcon(file.is_public, file.expires)"></i></td>
                     <td class="fm-content-item unselectable"
                         v-bind:class="(acl && file.acl === 0) ? 'text-hidden' : ''">
                         <i class="far" v-bind:class="extensionToIcon(file.extension)"></i>
                         {{ file.filename ? file.filename : file.basename }}
                     </td>
-                    <td>{{ bytesToHuman(file.size) }}</td>
+                    <td v-bind:title="file.size">{{ bytesToHuman(file.size) }}</td>
                     <td>
                         {{ file.extension }}
                     </td>
@@ -164,6 +167,13 @@ export default {
 
         .text-hidden {
             color: #cdcdcd;
+        }
+
+        td .permission.red {
+            color: #900;
+        }
+        td .permission.green {
+            color: #090;
         }
     }
 </style>
