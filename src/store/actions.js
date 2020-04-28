@@ -276,6 +276,50 @@ export default {
   },
 
   /**
+   * Publish selected files
+   * @param state
+   * @param getters
+   * @param dispatch
+   * @param items
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
+   */
+  publish({ state, getters, dispatch }, items) {
+      return POST.publish({
+        disk: getters.selectedDisk,
+        items: state[state.activeManager].selected,
+      }).then((response) => {
+        // if all items published successfully
+        if (response.data.result.status === 'success') {
+          // refresh content
+          dispatch('refreshManagers');
+        }
+
+        return response;
+      });
+  },
+  /**
+   * Unublish selected files
+   * @param state
+   * @param getters
+   * @param dispatch
+   * @param items
+   * @returns {*|PromiseLike<T | never>|Promise<T | never>}
+   */
+  unpublish({ state, getters, dispatch }, items) {
+      return POST.unpublish({
+        disk: getters.selectedDisk,
+        items: state[state.activeManager].selected,
+      }).then((response) => {
+        // if all items published successfully
+        if (response.data.result.status === 'success') {
+          // refresh content
+          dispatch('refreshManagers');
+        }
+
+        return response;
+      });
+  },
+  /**
    * Delete selected files and folders
    * @param state
    * @param getters

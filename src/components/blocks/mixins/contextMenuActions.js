@@ -6,6 +6,25 @@ import HTTP from '../../../http/get';
  */
 export default {
   methods: {
+      /**
+       * Publish
+       */
+      publishAction() {
+          this.$store.dispatch('fm/publish');
+      },
+      /**
+       * Unublish
+       */
+      unpublishAction() {
+          this.$store.dispatch('fm/unpublish');
+      },
+      /**
+       * Expire
+       */
+      expireAction() {
+          // @TODO
+      },
+
     /**
      * Open folder
      */

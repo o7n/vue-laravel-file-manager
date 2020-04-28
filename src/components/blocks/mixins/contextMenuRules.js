@@ -5,6 +5,31 @@
 export default {
   methods: {
     /**
+     * Publish - menu item status - show or hide
+     * @returns {boolean}
+     */
+    expireRule() {
+        return this.selectedItems.every(elem => elem.type === 'file') &&
+            !this.selectedItems.every(elem => elem.is_public === 0);
+    },
+    /**
+     * Publish - menu item status - show or hide
+     * @returns {boolean}
+     */
+    publishRule() {
+        return this.selectedItems.every(elem => elem.type === 'file') &&
+            !this.selectedItems.every(elem => elem.is_public === 1);
+    },
+    /**
+     * Unpublish - menu item status - show or hide
+     * @returns {boolean}
+     */
+    unpublishRule() {
+        return this.selectedItems.every(elem => elem.type === 'file') &&
+            !this.selectedItems.every(elem => elem.is_public === 0);
+    },
+
+    /**
      * Open - menu item status - show or hide
      * @returns {boolean}
      */

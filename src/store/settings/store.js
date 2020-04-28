@@ -129,10 +129,23 @@ export default {
           },
         ], [
           {
+            name: 'expire',
+            icon: 'fas fa-clock',
+          },
+          {
+            name: 'publish',
+            icon: 'fas fa-lock-open',
+          },
+          {
+            name: 'unpublish',
+            icon: 'fas fa-lock',
+          },
+        ], [
+          {
             name: 'properties',
             icon: 'far fa-list-alt',
           },
-        ],
+        ]
       ],
 
       // Image extensions for view and preview

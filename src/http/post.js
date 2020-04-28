@@ -41,6 +41,22 @@ export default {
   },
 
   /**
+   * Publish selected items
+   * @param data
+   * @returns {*}
+   */
+  publish(data) {
+    return HTTP.post('publish', data);
+  },
+  /**
+   * Unpublish selected items
+   * @param data
+   * @returns {*}
+   */
+  unpublish(data) {
+    return HTTP.post('unpublish', data);
+  },
+  /**
    * Delete selected items
    * @param data
    * @returns {*}
