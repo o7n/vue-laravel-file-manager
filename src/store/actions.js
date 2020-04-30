@@ -223,6 +223,20 @@ export default {
     });
   },
 
+  setExpire({ getters, commit, dispatch} , { files, expire }) {
+      return POST.expire({
+        disk: getters.selectedDisk,
+        files,
+        expire
+      }).then((response) => {
+        // if all items set successfully
+        if (response.data.result.status === 'success') {
+          // refresh content
+          dispatch('refreshManagers');
+        }
+        return response;
+      });
+  },
   /**
    * Upload file or files
    * @param getters

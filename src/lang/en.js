@@ -80,6 +80,14 @@ const en = {
       noSelected: 'Nothing selected!',
       title: 'Delete',
     },
+    expiresettings: {
+      title: 'Expiry Settings',
+      current: 'Current Expiry',
+      new: 'New Expiry',
+      expires: 'Set Expiry to',
+      never: 'Never Expire',
+      set: 'Set Expiry'
+    },
     newFile: {
       fieldName: 'File name',
       fieldFeedback: 'File exists!',

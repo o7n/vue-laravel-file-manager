@@ -27,6 +27,7 @@ import VideoPlayer from './views/VideoPlayer.vue';
 import Zip from './views/Zip.vue';
 import Unzip from './views/Unzip.vue';
 import About from './views/About.vue';
+import ExpireSettings from './views/ExpireSettings.vue';
 
 export default {
   name: 'Modal',
@@ -46,6 +47,7 @@ export default {
     Zip,
     Unzip,
     About,
+    ExpireSettings,
   },
   mounted() {
     // set height

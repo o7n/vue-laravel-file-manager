@@ -30,6 +30,10 @@ export default {
     return HTTP.post('create-directory', data);
   },
 
+  expire(data, expire) {
+    return HTTP.post('expire', data, expire);
+  },
+
   /**
    * Upload file
    * @param data

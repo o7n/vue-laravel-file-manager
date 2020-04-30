@@ -22,7 +22,10 @@ export default {
        * Expire
        */
       expireAction() {
-          // @TODO
+          this.$store.commit('fm/modal/setModalState', {
+            modalName: 'ExpireSettings',
+            show: true,
+          });
       },
 
     /**
