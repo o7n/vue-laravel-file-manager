@@ -43,7 +43,7 @@ export default {
   components: { Datepicker },
   data() {
     return {
-        expires_d: new Date(this.getExpiryTS() * 1000),
+        expires_d: new Date(this.getExpiryTS()),
         expire_type: 'val'
     };
   },
@@ -51,18 +51,18 @@ export default {
     getExpiryTS() {
         var items = this.$store.getters['fm/selectedItems']
         if (items.every(elem => elem.expires == 0)) {
-            return 0;
+            return Date.now() + (86400 * 1000 * 14);
         }
         if (items.every(elem => elem.expires == null)) {
-            return 0;
+            return Date.now() + (86400 * 1000 * 14);
         }
         if (items.every(elem => elem.expires == items[0].expires)) {
-            return items[0].expires;
+            return items[0].expires * 1000;
         }
         else {
             // if we have mixed values, return the first non-zero value
             const firstnzval = (acc, el) => (acc > 0) ? acc : el.expires;
-            return items.reduce(firstnzval);
+            return items.reduce(firstnzval) * 1000;
         }
     },
     setExpire() {
